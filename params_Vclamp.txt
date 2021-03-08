@@ -1,0 +1,76 @@
+//All parameters must be in the stoch{} block
+//problemType = stoch; must be set
+//All other parameters must be set
+//Double-check for typos such as missing ;'s and ='s
+
+stoch {
+  problemType = stoch;
+
+  //Simulation parameters
+  t_final = 2000;//30 //3000;
+  period_stim = 1000;
+  t_end_stim = 10000;//30 //3000;
+  I_stim = -10000;//-10000; ERROR!!!
+
+  VClamp_Flag = 1; //0;
+  VClamp_ClampV =-90;//-90;  //first part of the cycle
+  VClamp_HoldV =0;
+  VClamp_Freq = 1000; //1000; The duration of the entire cycle
+  VClamp_Duration = 200; //200; The duration of the first part 
+
+  VClamp2_T1 = 0; 
+  VClamp2_T2 = 0;
+  VClamp2_ClampV = -10;
+
+  //Ion concentrations
+  Default_Cai = 0.1e-3;//0.1e-3
+  Default_CaSR = 0.4;
+  Default_Nai = 10;
+  Cao = 2;
+  clamp_nai = 0;// 0 ERROR!!!
+  
+  //Beta-adrenergic and HF
+  beta_flag = 0;		//1(+ISO), 0 (-ISO)
+  mode2_frac = 0.0;		//0.05(+ISO), 0 (-ISO)
+  ryr_kplus_scale = 1; //7.5 oubain 1.5;normal		 //1.8; //1.2;	//4 HF(+ISO), 1.5 HF(-ISO) or Normal(+ISO), 1.8 +H2O2
+  serca_kf_scale = 1;		//0.5 (+ISO), 1 (-ISO), 2 HF(-ISO)
+  serca_vmax_scale = 1;
+
+  //HF 
+  ik1_scale = 1;//1; //0.5;	//0.5 HF, 1 Normal
+  ncx_scale = 1; //2; 	//2 HF, 1 Normal
+  ito1_scale = 1; //0.8; //1.2	//0.8 HF, 1.2 Normal
+  frac_orphan = 0; //0.21;	//0.21 HF, 0 Normal
+  Acap = 1.534e-4; 	//1.534e-4 Always  total cell membrane capacitance uF or total cell membrane area cm2
+
+  //IKr scaling (for rapid pacing)
+  ikr_scale = 1;     	//2.5 4Hz(+ISO), 1 Norm/HF(-ISO)
+
+  //Ouabain parameters (0.1 for 1 uM)
+  nak_scale = 1;//0.1 Ouabain 1 Normal 0.8 AnkB+/-
+
+  //NCX localization (0.5 default)
+  frac_ncx_sl = 1;
+
+  //LQTS1 data
+  k_tau_plus_IKs = 1;
+  k_tau_minus_IKs = 1;
+  delta_V_half_IKs = 0;
+  k_k_IKs = 1;
+  k_Gmax_IKs = 1;
+
+  //IKr scaling factor
+  k_Gmax_IKr=1;
+
+  //Cell dimensions (25x20x50 full size)
+  NFRU_X =15;//15;
+  NFRU_Y =12;//12;
+  NFRU_Z =30;//30;
+
+  //Ca2+ dynamics clamp control
+  bClampCaSS = 0;
+  bClampCaPD = 0;
+  bClampCai  = 0;
+
+  //rand_seed =150000;
+}
